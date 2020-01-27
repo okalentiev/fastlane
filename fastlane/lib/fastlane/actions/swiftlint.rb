@@ -107,9 +107,15 @@ module Fastlane
                                        type: Boolean,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :reporter,
-                                       description: 'Choose output reporter',
+                                       description: "Choose output reporter. Available: xcode, json, csv, checkstyle, junit, html, \
+                                                     emoji, sonarqube, markdown, github-actions-logging.",
                                        is_string: true,
-                                       optional: true),
+                                       optional: true,
+                                       verify_block: proc do |value|
+                                         UI.user_error!("Available values are 'xcode', 'json', 'csv', 'checkstyle', 'junit', 'html', \
+                                                        'emoji', 'sonarqube', 'markdown', 'github-actions-logging'") 
+                                         unless ['xcode', 'json', 'csv', 'checkstyle', 'junit', 'html', 'emoji', 'sonarqube', 'markdown', 'github-actions-logging'].include?(value)
+                                       end),
           FastlaneCore::ConfigItem.new(key: :quiet,
                                        description: "Don't print status logs like 'Linting <file>' & 'Done linting'",
                                        default_value: false,
