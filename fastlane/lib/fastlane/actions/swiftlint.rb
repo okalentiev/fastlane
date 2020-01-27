@@ -107,7 +107,7 @@ module Fastlane
                                        type: Boolean,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :reporter,
-                                       description: 'Choose output reporter',
+                                       description: 'Choose output reporter. Available: xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown, github-actions-logging.',
                                        is_string: true,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :quiet,
